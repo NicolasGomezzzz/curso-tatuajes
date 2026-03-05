@@ -1,0 +1,24 @@
+name: Deploy
+
+on:
+  # Se activa cada vez que hacés un "git push" a la rama main
+  push:
+    branches: [ main ]
+  # Permite correrlo manualmente desde la pestaña Actions si fuera necesario
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository content
+        uses: actions/checkout@v4
+
+      - name: Install, build, and upload your Astro site
+        uses: withastro/action@v3
+        # No necesitás configurar nada más, la acción detecta si usás npm, pnpm o yarn
