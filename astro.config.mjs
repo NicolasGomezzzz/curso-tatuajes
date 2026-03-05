@@ -1,8 +1,6 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-    site: 'http//niciatattoo.com', // <--- Poné acá tu dominio de DonWeb
-    base: '/',
+    site: 'https://niciatattoo.com', // Tu dominio real
+    base: 'curso-tatuajes',          // EL NOMBRE EXACTO DE TU REPOSITORIO
 });
