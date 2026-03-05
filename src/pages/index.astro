@@ -1,17 +1,201 @@
 ---
-
+const modulos = [
+  "El mindset del tatuador inicial",
+  "Herramientas mínimas necesarias",
+  "Higiene básica y set up de mesa",
+  "La práctica antes de la piel",
+  "Cómo saber si estás listo para tatuar en piel real",
+  "Agarre, postura y control de la máquina PEN",
+  "Tipos de aguja y sus usos básicos",
+  "Como preparar un diseño y transferirlo con stencil",
+  "Técnica básica antes de tocar piel real",
+  "Tu primer tatuaje real",
+  "Errores comunes y como evitarlos al comenzar",
+  "Cuidado posterior al tatuaje",
+  "BONUS: Qué preguntarle a tu cliente para un turno responsable"
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Curso de Tatuajes | Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <main class="snapping-container">
+      
+      <section class="full-screen hero">
+        <div class="logo-top">
+          <img src="/logo-negro.jpeg" alt="Logo Curso de Tatuajes" class="main-logo" />
+        </div>
+        <div class="content">
+          <h1>Formación Profesional de Tatuaje</h1>
+          <p>Aprendé la técnica, la higiene y el arte desde cero.</p>
+          <a href="#temario" class="btn-black">Comenzar ahora</a>
+        </div>
+      </section>
+
+      <section id="temario" class="full-screen modules-section">
+        <div class="container">
+          <h2>Plan de Estudios</h2>
+          <div class="grid-modulos">
+            {modulos.map((titulo, index) => (
+              <div class="card-modulo reveal">
+                <span class="numero">{String(index + 1).padStart(2, '0')}</span>
+                <h3>{titulo}</h3>
+              </div>
+            ))}
+          </div>
+          <div class="cta-temario reveal">
+              <a href="#pago" class="btn-black">Inscribirme ya</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="pago" class="full-screen checkout-section">
+          <div class="container-small reveal">
+              <h2>Acceso Inmediato</h2>
+              <div class="price-box">
+                  <p class="includes">Incluye: 13 Módulos + Certificado + Material de Práctica</p>
+                  <p class="price">Conseguí todos los modulos + videos explicativos</p>
+                  <a href="TU_LINK_DE_MERCADO_PAGO" target="_blank" class="btn-mp">
+                      Pagar con Mercado Pago
+                  </a>
+                  <p class="secure">🔒 Pago 100% seguro y procesado por Mercado Pago</p>
+              </div>
+          </div>
+      </section>
+
+    </main>
+
+    <script>
+      const observerOptions = { threshold: 0.1 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      const revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach(el => observer.observe(el));
+    </script>
+
+    <style>
+      :root {
+        --black: #000000;
+        --white: #ffffff;
+        --mp-blue: #009ee3;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      
+      html { 
+        scroll-behavior: smooth;
+        height: 100%;
+      }
+
+      body { 
+        background-color: var(--white); 
+        color: var(--black); 
+        font-family: 'Inter', sans-serif;
+        height: 100%;
+      }
+
+      /* EFECTO MAGNETICO EN PC */
+      @media (min-width: 1024px) {
+        .snapping-container {
+          height: 100vh;
+          overflow-y: scroll;
+          scroll-snap-type: y mandatory;
+        }
+        .full-screen {
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+        }
+      }
+
+      .full-screen {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        position: relative;
+      }
+
+      /* LOGO */
+      .logo-top { position: absolute; top: 40px; width: 100%; display: flex; justify-content: center; left: 0; }
+      .main-logo { height: 140px; width: auto; display: block; }
+
+      /* HERO */
+      .hero .content { text-align: center; max-width: 850px; margin-top: 80px; }
+      h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; letter-spacing: -3px; line-height: 0.9; text-transform: uppercase; margin-bottom: 20px; }
+      p { font-size: 1.2rem; color: #444; margin-bottom: 2rem; }
+
+      /* BOTONES */
+      .btn-black {
+        background-color: var(--black);
+        color: var(--white);
+        padding: 1rem 3rem;
+        text-decoration: none;
+        font-weight: 800;
+        text-transform: uppercase;
+        border: 2px solid var(--black);
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+      .btn-black:hover { background-color: var(--white); color: var(--black); }
+
+      /* MÓDULOS - OPTIMIZADO PARA PC */
+      .container { width: 100%; max-width: 1200px; }
+      h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 2rem; text-transform: uppercase; text-align: center; }
+      
+      .grid-modulos { 
+        display: grid; 
+        /* En PC hacemos las tarjetas un poco más pequeñas para que entren todas */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+        gap: 12px; 
+      }
+
+      .card-modulo { 
+        background: var(--white); 
+        padding: 1.2rem; 
+        border: 2px solid var(--black); 
+        min-height: 100px; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center;
+      }
+
+      .numero { font-size: 1.2rem; font-weight: 900; margin-bottom: 5px; }
+      h3 { font-size: 0.85rem; line-height: 1.2; font-weight: 700; text-transform: uppercase; }
+
+      .cta-temario { margin-top: 30px; text-align: center; }
+
+      /* PAGO */
+      .checkout-section { background-color: #fafafa; }
+      .container-small { max-width: 500px; text-align: center; }
+      .price-box { background: white; border: 2px solid var(--black); padding: 30px; }
+      .price { font-size: 1.8rem; font-weight: 900; margin-bottom: 20px; }
+      .btn-mp { background-color: var(--mp-blue); color: white; padding: 1.2rem; text-decoration: none; font-weight: 800; display: block; text-transform: uppercase; }
+
+      /* ANIMACIONES */
+      .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+
+      /* CELULAR: Mantenemos el scroll normal */
+      @media (max-width: 1023px) {
+        .full-screen { min-height: auto; padding: 80px 20px; }
+        .grid-modulos { grid-template-columns: 1fr; }
+        .main-logo { height: 100px; }
+        h1 { font-size: 2.8rem; }
+      }
+    </style>
+  </body>
 </html>

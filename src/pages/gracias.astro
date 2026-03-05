@@ -1,0 +1,96 @@
+---
+// src/pages/gracias.astro
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>¡Gracias por tu inscripción! | Curso de Tatuajes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <section class="full-screen">
+      <div class="logo-top">
+        <img src="/logo-negro.jpeg" alt="Logo" class="main-logo" />
+      </div>
+
+      <div class="content reveal active">
+        <div class="icon-check">✓</div>
+        <h1>¡Casi listo!</h1>
+        <p>Para finalizar tu inscripción y darte acceso a los módulos, por favor enviame el comprobante de pago.</p>
+        
+        <div class="instructions">
+            <ol>
+                <li>Sacale una captura al comprobante de Mercado Pago.</li>
+                <li>Hacé click en el botón de abajo.</li>
+                <li>Enviame la imagen por WhatsApp.</li>
+            </ol>
+        </div>
+
+        <a href="https://wa.me/TU_NUMERO_AQUI?text=Hola!%20Ya%20realicé%20el%20pago%20del%20curso%20de%20tatuajes.%20Acá%20te%20adjunto%20el%20comprobante." 
+           class="btn-whatsapp">
+           Enviar comprobante por WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <style>
+      :root { --black: #000000; --white: #ffffff; --whatsapp: #25d366; }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { background-color: var(--white); color: var(--black); font-family: 'Inter', sans-serif; }
+
+      .full-screen {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .logo-top { position: absolute; top: 40px; }
+      .main-logo { height: 100px; width: auto; }
+
+      .content { max-width: 500px; width: 100%; }
+
+      .icon-check {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: 900;
+      }
+
+      h1 { font-size: 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 10px; }
+      p { font-size: 1.1rem; color: #444; margin-bottom: 30px; line-height: 1.4; }
+
+      .instructions {
+        text-align: left;
+        background: #f9f9f9;
+        padding: 25px;
+        border: 2px solid var(--black);
+        margin-bottom: 30px;
+      }
+
+      .instructions ol { padding-left: 20px; }
+      .instructions li { margin-bottom: 10px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
+
+      .btn-whatsapp {
+        background-color: var(--black); /* Mantenemos el estilo negro para que sea profesional */
+        color: white;
+        padding: 1.2rem 2rem;
+        text-decoration: none;
+        font-weight: 800;
+        display: block;
+        text-transform: uppercase;
+        border: 2px solid var(--black);
+        transition: all 0.3s;
+      }
+
+      .btn-whatsapp:hover {
+        background-color: var(--whatsapp);
+        border-color: var(--whatsapp);
+      }
+    </style>
+  </body>
+</html>
